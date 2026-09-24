@@ -1,0 +1,33 @@
+title: Jornal Nosso
+description: "Jornal regional universitário — notícias, cultura, esportes e opinião."
+url: "https://jornalnosso.com.br"
+baseurl: ""
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+permalink: /:categories/:title/
+
+sections:
+  - slug: cidade
+    name: Cidade
+  - slug: economia
+    name: Economia
+  - slug: esportes
+    name: Esportes
+  - slug: cultura
+    name: Cultura
+  - slug: opiniao
+    name: Opinião
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: article
+
+exclude:
+  - README.md
+  - COMO-PUBLICAR.md

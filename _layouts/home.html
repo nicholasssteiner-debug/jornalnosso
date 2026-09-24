@@ -1,0 +1,47 @@
+---
+layout: default
+---
+{% assign featured = site.posts | first %}
+{% assign side_posts = site.posts | slice: 1, 3 %}
+{% assign grid_posts = site.posts | slice: 4, 6 %}
+
+<section class="featured">
+  {% if featured %}
+  <article class="featured-main">
+    <span class="tag">{% include category-name.html category=featured.categories.first %}</span>
+    <h1><a href="{{ featured.url | relative_url }}">{{ featured.title }}</a></h1>
+    <p>{{ featured.summary | default: featured.excerpt | strip_html | truncatewords: 40 }}</p>
+    <a href="{{ featured.url | relative_url }}" class="read-more">Leia a matéria completa →</a>
+  </article>
+  {% else %}
+  <article class="featured-main">
+    <span class="tag">Destaque</span>
+    <h1>Bem-vindo ao Jornal Nosso</h1>
+    <p>Ainda não há matérias publicadas. Assim que a primeira for adicionada em <code>_posts/</code>, ela aparece aqui automaticamente.</p>
+  </article>
+  {% endif %}
+
+  <div class="featured-side">
+    {% for post in side_posts %}
+    <article class="side-item">
+      <span class="tag">{% include category-name.html category=post.categories.first %}</span>
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% if grid_posts.size > 0 %}
+<section class="grid-section">
+  <h2 class="section-title">Últimas notícias</h2>
+  <div class="news-grid">
+    {% for post in grid_posts %}
+    <article class="news-card">
+      <span class="tag">{% include category-name.html category=post.categories.first %}</span>
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <p>{{ post.summary | default: post.excerpt | strip_html | truncatewords: 20 }}</p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}

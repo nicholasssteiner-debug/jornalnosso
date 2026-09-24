@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+<meta name="description" content="{{ page.summary | default: site.description }}">
+<link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="{{ '/' | relative_url }}" class="logo">Jornal <span>Nosso</span></a>
+    <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="main-nav">
+      <a href="{{ '/' | relative_url }}">Início</a>
+      {% for section in site.sections %}
+      <a href="{{ site.baseurl }}/{{ section.slug }}/">{{ section.name }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+  <div class="date-bar container">
+    <span id="today"></span>
+  </div>
+</header>
+
+<main class="container">
+{{ content }}
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>&copy; <span id="year"></span> Jornal Nosso. Todos os direitos reservados.</p>
+    <p class="footer-links"><a href="#">Sobre</a> · <a href="#">Contato</a> · <a href="#">Anuncie</a></p>
+  </div>
+</footer>
+
+<script src="{{ '/js/main.js' | relative_url }}"></script>
+</body>
+</html>

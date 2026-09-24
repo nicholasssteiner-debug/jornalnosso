@@ -1,0 +1,16 @@
+---
+layout: default
+---
+{% assign months = "janeiro,fevereiro,março,abril,maio,junho,julho,agosto,setembro,outubro,novembro,dezembro" | split: "," %}
+{% assign month_index = page.date | date: "%-m" | plus: 0 | minus: 1 %}
+
+<article class="article-page">
+  <span class="tag">{% include category-name.html category=page.categories.first %}</span>
+  <h1 class="article-title">{{ page.title }}</h1>
+  <p class="article-byline">
+    {% if page.author %}Por {{ page.author }} · {% endif %}{{ page.date | date: "%d" }} de {{ months[month_index] }} de {{ page.date | date: "%Y" }}
+  </p>
+  <div class="article-body">
+    {{ content }}
+  </div>
+</article>

@@ -1,0 +1,22 @@
+---
+layout: default
+---
+{% assign section_posts = site.categories[page.category] %}
+
+<section class="section-page">
+  <h1 class="section-page-title">{{ page.title }}</h1>
+
+  {% if section_posts.size > 0 %}
+  <div class="news-grid">
+    {% for post in section_posts %}
+    <article class="news-card">
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <p>{{ post.summary | default: post.excerpt | strip_html | truncatewords: 20 }}</p>
+      <span class="news-card-date">{{ post.date | date: "%d/%m/%Y" }}</span>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="empty-section">Ainda não há matérias publicadas em {{ page.title }}.</p>
+  {% endif %}
+</section>

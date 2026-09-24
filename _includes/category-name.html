@@ -1,0 +1,8 @@
+{%- case include.category -%}
+  {%- when 'cidade' -%}Cidade
+  {%- when 'economia' -%}Economia
+  {%- when 'esportes' -%}Esportes
+  {%- when 'cultura' -%}Cultura
+  {%- when 'opiniao' -%}Opinião
+  {%- else -%}{{ include.category | capitalize }}
+{%- endcase -%}
