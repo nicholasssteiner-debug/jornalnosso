@@ -229,6 +229,25 @@ a { color: inherit; text-decoration: none; }
   margin: 0 0 20px;
 }
 
+.article-body h2 {
+  font-size: 1.4rem;
+  margin: 36px 0 16px;
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 0 0 20px;
+  padding-left: 24px;
+}
+
+.article-body li {
+  margin-bottom: 8px;
+}
+
+.article-body strong {
+  color: var(--color-text);
+}
+
 /* Section (category) page */
 .section-page {
   padding: 40px 0 60px;
