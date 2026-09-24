@@ -9,6 +9,8 @@ kramdown:
 
 permalink: /:categories/:title/
 
+future: true
+
 sections:
   - slug: cidade
     name: Cidade
